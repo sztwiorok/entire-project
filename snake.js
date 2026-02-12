@@ -5,11 +5,19 @@ const WIDTH = 30;
 const HEIGHT = 20;
 const TICK_MS = 150;
 
+// --- Colors (ANSI) ---
+const RESET = "\x1B[0m";
+const PINK = "\x1B[38;5;213m";
+const HOT_PINK = "\x1B[38;5;199m";
+const LIGHT_PINK = "\x1B[38;5;218m";
+const BRIGHT_PINK = "\x1B[38;5;198m";
+const PINK_BG = "\x1B[48;5;53m";
+
 // --- Symbols ---
-const WALL = "█";
-const SNAKE_HEAD = "O";
-const SNAKE_BODY = "●";
-const FOOD = "✦";
+const WALL = `${HOT_PINK}█${RESET}`;
+const SNAKE_HEAD = `${BRIGHT_PINK}O${RESET}`;
+const SNAKE_BODY = `${PINK}●${RESET}`;
+const FOOD = `${LIGHT_PINK}✦${RESET}`;
 const EMPTY = " ";
 
 // --- State ---
@@ -61,7 +69,7 @@ function render() {
 
   // Bottom wall
   lines.push(WALL.repeat(WIDTH + 2));
-  lines.push(`  Wynik: ${score}   |   WASD/Strzalki = ruch   Q = wyjscie   P = pauza`);
+  lines.push(`  ${PINK}Wynik: ${score}${RESET}   |   ${LIGHT_PINK}WASD/Strzalki = ruch   Q = wyjscie   P = pauza${RESET}`);
 
   // Move cursor to top-left and redraw
   process.stdout.write("\x1B[H" + lines.join("\n") + "\n");
@@ -106,7 +114,7 @@ function tick() {
 function endGame() {
   gameOver = true;
   render();
-  const msg = `\n  GAME OVER!  Wynik: ${score}\n  Nacisnij R aby zagrac ponownie, Q aby wyjsc.\n`;
+  const msg = `\n  ${BRIGHT_PINK}GAME OVER!${RESET}  ${PINK}Wynik: ${score}${RESET}\n  ${LIGHT_PINK}Nacisnij R aby zagrac ponownie, Q aby wyjsc.${RESET}\n`;
   process.stdout.write(msg);
 }
 
@@ -145,7 +153,7 @@ process.stdin.on("keypress", (str, key) => {
   if (key.name === "p" && !gameOver) {
     paused = !paused;
     if (paused) {
-      process.stdout.write(`\n  -- PAUZA -- (P aby wznowic)\n`);
+      process.stdout.write(`\n  ${HOT_PINK}-- PAUZA -- (P aby wznowic)${RESET}\n`);
     } else {
       process.stdout.write("\x1B[2J");
       render();
