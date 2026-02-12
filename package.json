@@ -1,0 +1,22 @@
+{
+  "name": "entire-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node snake.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sztwiorok/entire-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/sztwiorok/entire-project/issues"
+  },
+  "homepage": "https://github.com/sztwiorok/entire-project#readme"
+}
